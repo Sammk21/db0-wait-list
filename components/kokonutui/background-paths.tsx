@@ -83,7 +83,7 @@ export default function BackgroundPaths({
       <div className="w-[100dvw] h-[100dvh] absolute top-0 left-0 opacity-50 flex sm:items-center justify-center">
         <p
           style={{ fontFamily: "cofo-sans-pixel, sans-serif" }}
-          className="cofo-sans-pixel text-[8rem]   md:text-[70vh] mt-3 text-center"
+          className="cofo-sans-pixel text-[8rem]   sm:text-[70vh] mt-3 text-center"
         >
           0/
         </p>
@@ -96,30 +96,43 @@ export default function BackgroundPaths({
           transition={{ duration: 2 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-8 tracking-tighter">
-            {words.map((word, wordIndex) => (
-              <span key={wordIndex} className="inline-block mr-5 last:mr-0">
-                {word.split("").map((letter, letterIndex) => (
-                  <motion.span
-                    key={`${wordIndex}-${letterIndex}`}
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      delay: wordIndex * 0.1 + letterIndex * 0.03,
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 25,
-                    }}
-                    className="inline-block text-transparent bg-clip-text 
+          <div className="mb-8 ">
+            <h1 className="text-4xl sm:text-7xl md:text-8xl mb-3 font-bold tracking-tight">
+              {words.map((word, wordIndex) => (
+                <span
+                  key={wordIndex}
+                  className="inline-block mr-3 sm:mr-5 last:mr-0"
+                >
+                  {word.split("").map((letter, letterIndex) => (
+                    <motion.span
+                      key={`${wordIndex}-${letterIndex}`}
+                      initial={{ y: 100, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        delay: wordIndex * 0.1 + letterIndex * 0.03,
+                        type: "spring",
+                        stiffness: 150,
+                        damping: 25,
+                      }}
+                      className="inline-block text-transparent bg-clip-text 
                                         bg-gradient-to-r from-[#e6e7e8] to-[#cbcbcb]"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </span>
-            ))}
-          </h1>
-
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}
+                </span>
+              ))}
+            </h1>
+            <p className="text-[#e7e8e9] text-xs sm:text-lg mb-2">
+              The first drop is coming Soon.
+              <b className="text-sm sm:text-xl"> Limited pieces.</b> Be the
+              first to know.
+            </p>
+            <p className="text-[#e7e8e9] text-xs sm:text-lg">
+              <b className="text-sm sm:text-xl">Join the waitlist</b> now for
+              early access, and a chance to cop before the world does.
+            </p>
+          </div>
           <WaitlistForm onSuccess={handleSuccess} />
         </motion.div>
       </div>

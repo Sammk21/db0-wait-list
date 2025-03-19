@@ -6,7 +6,7 @@ import { joinWaitlist } from "@/actions/waitlist";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 
 interface WaitlistFormProps {
   onSuccess: (count: number) => void;
@@ -15,26 +15,16 @@ interface WaitlistFormProps {
 export function WaitlistForm({ onSuccess }: WaitlistFormProps) {
   const [state, formAction, isPending] = useActionState(joinWaitlist, null);
   const [email, setEmail] = useState("");
-  const { toast } = useToast();
 
   useEffect(() => {
     if (state?.success) {
-      toast({
-        title: "Success!",
-        description: state.message,
-        duration: 5000,
-      });
+      toast.success(state.message);
       if (state.count) {
         onSuccess(state.count);
       }
       setEmail("");
     } else if (state?.success === false) {
-      toast({
-        title: "Error",
-        description: state.message,
-        variant: "destructive",
-        duration: 5000,
-      });
+      toast.error(state.message);
     }
   }, [state, toast, onSuccess]);
 
