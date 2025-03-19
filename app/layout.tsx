@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
-}
+  title: "Divide By Zero",
+  description: "Waitlist form for divide by zero",
+  generator: "Sameer Khan",
+};
 
 export default function RootLayout({
   children,
